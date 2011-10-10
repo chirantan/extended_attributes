@@ -1,4 +1,5 @@
-# Extended Attributes – objectize your model attributes in ActiveRecord
+# Extended Attributes
+_Add custom behavior to your model attributes in ActiveRecord_
 
 How often do you have to have an instance method implemented in a model but only to work with just 1 attribute?
 
