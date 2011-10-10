@@ -10,11 +10,11 @@ Gem::Specification.new do |gem|
   gem.email = %q{chirantan.rajhans@gmail.com}
   gem.homepage = 'http://github.com/chirantan'
 
-  gem.add_runtime_dependency 'active_record', '< 3.1.0'
+  gem.add_runtime_dependency 'active_record', '~> 3.1.0'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.require_paths = ['lib']
-  gem.version       = '1.0.0'
+  gem.version       = '1.0.2'
 end
