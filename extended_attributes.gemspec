@@ -8,14 +8,9 @@ Gem::Specification.new do |gem|
   gem.description = %q{Extend behavior of attributes of your active record models.}
   gem.summary = "Objectify your active record attributes."
   gem.email = %q{chirantan.rajhans@gmail.com}
-  gem.homepage = 'http://about.me/chirantan.rajhans'
+  gem.homepage = 'http://github.com/chirantan'
 
-  gem.add_runtime_dependency 'rails'
-  gem.add_development_dependency 'rspec', '~> 2.5'
-  gem.add_development_dependency 'mysql2', '< 0.3'
-  gem.add_development_dependency 'pg'
-  gem.add_development_dependency 'guard'
-  gem.add_development_dependency 'guard-rspec'
+  gem.add_runtime_dependency 'active_record', '< 3.1.0'
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
