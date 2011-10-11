@@ -83,7 +83,7 @@ Extending attributes adds modularity to your design, better object orientation a
 
 ### Dealing with Fixnum
 
-[Fixnums cannot have singleton methods](www.ruby-forum.com/topic/50170). Thus, if you try to extend an attribute that is a Fixnum, the whole behavior will be `include`d on Fixnum class, which means that the same behavior will be available on all instances of Fixnum throughout your application. So be careful with them.
+[Fixnums cannot have singleton methods](http://www.ruby-forum.com/topic/50170). Thus, if you try to extend an attribute that is a Fixnum, the whole behavior will be `include`d on Fixnum class, which means that the same behavior will be available on all instances of Fixnum throughout your application. So be careful with them.
 
 ### Note
 
