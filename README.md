@@ -10,6 +10,13 @@ class User < ActiveRecord::Base
     name.split(' ').first
   end
   
+  def about_in(format = :plain)
+    case format
+    when :plain; about
+    when :html; RDiscount.new(about).to_html
+    end
+  end
+  
 end 
 ```
 
@@ -58,24 +65,26 @@ user.name.last # Anderson
 Additionally, you can also have modules exteded on the attributes
 
 ```ruby 
-module NameMethods
+module MarkdownMethods
 
-  def first
-    split(' ').first
-  end
-  
-  def last
-    split(' ').last
+  def to_html
+    RDiscount.new(self).to_html # requies rdiscount gem
   end
 
 end
 
 class User < ActiveRecord::Base
 
-  extend_attribute :name, :extend => NameMethods
+  extend_attribute :about, :extend => MarkdownMethods
   
 end
+
+@user.about # _This text should appear italic_
+@user.about.to_html # <p><em>This text should appear italic</em></p>\n
+
 ```
+
+More examples under examples folder
 
 ### Why?
 
