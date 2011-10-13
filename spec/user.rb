@@ -1,6 +1,7 @@
 
 require File.expand_path(File.dirname(__FILE__) + '/date_methods.rb')
 require File.expand_path(File.dirname(__FILE__) + '/../lib/extended_attributes.rb')
+require File.expand_path(File.dirname(__FILE__) + '/../examples/markdown.rb')
 
 class User < ActiveRecord::Base
   
@@ -23,6 +24,6 @@ class User < ActiveRecord::Base
   end
   
   extend_attribute :dob, :extend => DateMethods
-  
+  extend_attribute :about, :extend => MarkdownMethods
   
 end

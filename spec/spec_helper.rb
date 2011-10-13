@@ -17,6 +17,8 @@ ActiveRecord::Schema.define do
     t.string  :name
     t.integer :work_experience
     t.date    :dob
+    t.text    :about
+    t.text    :personal_statement
   end
 end
 

@@ -6,7 +6,8 @@ describe User do
     @user = User.create(
       :name            => 'Chirantan Rajhans',
       :work_experience => 3,
-      :dob             => Date.parse("6th February 1986")
+      :dob             => Date.parse("6th February 1986"),
+      :about           => "_This text should appear italic_"
     ) 
   end
   
@@ -22,6 +23,11 @@ describe User do
   
   it 'should extend dob attribute with DateMethods module' do
     @user.dob.age.should == 25
+  end
+  
+  it 'it should have to_hml method on about attribute' do
+    @user.about.should == "_This text should appear italic_"
+    @user.about.to_html.should == "<p><em>This text should appear italic</em></p>\n"
   end
   
 end
