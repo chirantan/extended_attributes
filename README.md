@@ -74,17 +74,55 @@ module MarkdownMethods
 end
 
 class User < ActiveRecord::Base
-
   extend_attribute :about, :extend => MarkdownMethods
+end
+```
+And...
+
+```ruby
+@user.about # _This text should appear italic_
+@user.about.to_html # <p><em>This text should appear italic</em></p>\n
+```
+
+Another example from `examples` folder
+
+``` ruby
+
+require 'net/http'
+require 'uri'
+require 'json'
+
+module SocialProfiles
+  
+  def to_facebook
+    "http://www.facebook.com/#{self}"
+  end
+  
+  def to_twitter
+    "http://www.twitter.com/#{self}"
+  end
+  
+  def on_twitter?
+    url = "http://api.twitter.com/1/users/show.json?screen_name=#{self}"
+    json = Net::HTTP.get_response(URI.parse(url)).body
+    JSON.parse(json)['error'].nil?
+  end
   
 end
 
-@user.about # _This text should appear italic_
-@user.about.to_html # <p><em>This text should appear italic</em></p>\n
+class User < ActiveRecord::Base
+  extend_attribute :username, :extend => SocialProfiles
+end
+```
+And...
 
+``` ruby
+@user.username # chirantan
+@user.username.to_twitter # http://www.twitter.com/chirantan
+@user.username.on_twitter? # true
+@user.username.to_facebook # http://www.facebook.com/chirantan
 ```
 
-More examples under examples folder
 
 ### Why?
 
