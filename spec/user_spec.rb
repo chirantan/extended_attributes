@@ -7,7 +7,8 @@ describe User do
       :name            => 'Chirantan Rajhans',
       :work_experience => 3,
       :dob             => Date.parse("6th February 1986"),
-      :about           => "_This text should appear italic_"
+      :about           => "_This text should appear italic_",
+      :username        => "chirantan"
     ) 
   end
   
@@ -25,10 +26,20 @@ describe User do
     @user.dob.age.should == 25
   end
   
-  it 'it should have to_hml method on about attribute' do
+  it 'should have to_hml method on about attribute' do
     @user.about.should == "_This text should appear italic_"
     @user.about.to_html.should == "<p><em>This text should appear italic</em></p>\n"
   end
   
-end
+  it 'should check if the username is a valid social network username' do
+    @user.username.should == 'chirantan'
+    @user.username.to_twitter.should == 'http://www.twitter.com/chirantan'
+    @user.username.on_twitter?.should be_true
+    @another_user = User.new(@user.attributes.update({:username => 'aaaaaaaaaaaaaaaa'}))
+    @another_user.username.on_twitter?.should be_false
+    @yet_another_user = User.new(@user.attributes.update({:username => 'chirantan.rajhans'}))
+    @yet_another_user.username.to_facebook.should == 'http://www.facebook.com/chirantan.rajhans'
+  end
   
+end
+

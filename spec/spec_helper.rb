@@ -19,6 +19,7 @@ ActiveRecord::Schema.define do
     t.date    :dob
     t.text    :about
     t.text    :personal_statement
+    t.string  :username 
   end
 end
 
